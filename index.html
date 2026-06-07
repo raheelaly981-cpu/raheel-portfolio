@@ -2,44 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Raheel Studio</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ===== GLOBAL ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background: #0f172a;
+  background: linear-gradient(135deg, #0f172a, #020617);
   color: white;
-  transition: 0.4s ease;
 }
 
-body.light {
-  background: #f1f5f9;
-  color: #0f172a;
-}
-
+/* ===== NAV ===== */
 nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: #111827;
-  position: sticky;
-  top: 0;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
   z-index: 1000;
-}
-
-body.light nav {
-  background: #e2e8f0;
 }
 
 nav h2 {
@@ -47,156 +39,185 @@ nav h2 {
 }
 
 nav a {
-  color: inherit;
+  color: white;
   margin: 0 10px;
   text-decoration: none;
 }
 
-nav a:hover {
-  color: #38bdf8;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  background: #38bdf8;
-  color: black;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-section {
-  padding: 70px 20px;
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding-top: 80px;
 }
 
-.profile-img {
-  width: 150px;
-  height: 150px;
+/* ⭐ PROFILE IMAGE */
+.profile {
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #38bdf8;
+  transition: 0.3s;
 }
 
-.project {
-  display: block;
-  background: #1e293b;
-  margin: 10px auto;
-  padding: 15px;
-  border-radius: 10px;
-  width: 80%;
-  text-decoration: none;
-  color: white;
+/* FLOAT ANIMATION */
+.profile {
+  animation: float 3s ease-in-out infinite;
 }
 
-.project:hover {
-  background: #334155;
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.social-icons a {
-  margin: 5px;
-  color: white;
-  text-decoration: none;
-}
-
-.skill-bar {
-  width: 80%;
-  margin: 10px auto;
-}
-
-.bar {
-  background: #1e293b;
-  height: 10px;
-  border-radius: 10px;
-}
-
-.fill {
-  height: 10px;
-  width: 0;
+/* BUTTONS */
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
   background: #38bdf8;
-  border-radius: 10px;
+  color: black;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.toggle-btn {
-  cursor: pointer;
-  border: 1px solid #38bdf8;
-  padding: 5px 10px;
-  background: transparent;
-  color: inherit;
+.btn:hover {
+  box-shadow: 0 0 15px #38bdf8;
+  transform: scale(1.05);
+}
+
+/* INPUT */
+input[type="file"] {
+  margin-top: 10px;
+  color: white;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  margin: 15px auto;
+  width: 80%;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+
+  /* ANIMATION */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
   <h2>Raheel Studio</h2>
   <div>
     <a href="#home">Home</a>
-    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#ai">AI Projects</a>
+    <a href="#ai">AI</a>
     <a href="#contact">Contact</a>
-    <button class="toggle-btn" onclick="toggleTheme()">🌙/☀</button>
   </div>
 </nav>
 
-<!-- HOME -->
-<section id="home">
-  <img id="profilePic" class="profile-img" src="profile.jpg">
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <!-- PROFILE IMAGE -->
+  <img id="profilePic" class="profile" src="profile.jpg" alt="profile">
+
   <h1>Hi, I'm Raheel Ahmed 👋</h1>
   <p>Frontend Developer | AI Enthusiast</p>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <h2>Skills</h2>
-  <p>HTML | CSS | JavaScript | Python | AI Basics</p>
+  <!-- UPLOAD -->
+  <input type="file" accept="image/*" id="uploadImage">
+
+  <button class="btn" onclick="scrollToProjects()">View Projects</button>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
   <h2>Web Projects</h2>
-
-  <a class="project" href="https://github.com/raheelaly981-cpu/expense-tracker" target="_blank">
-    💰 Expense Tracker
-  </a>
-
-  <a class="project" href="https://github.com/raheelaly981-cpu/quote-generator" target="_blank">
-    💬 Quote Generator
-  </a>
-
-  <a class="project" href="https://github.com/raheelaly981-cpu/flashcard-app" target="_blank">
-    🧠 Flashcard App
-  </a>
+  <div class="card">💰 Expense Tracker</div>
+  <div class="card">💬 Quote Generator</div>
+  <div class="card">🧠 Flashcard App</div>
 </section>
 
-<!-- AI PROJECTS (CODEALPHA ADDED) -->
+<!-- AI -->
 <section id="ai">
-  <h2>🤖 AI Internship Projects (CodeAlpha)</h2>
-
-  <a class="project" href="https://github.com/raheelaly981-cpu/CodeAlpha_Chatbot" target="_blank">
-    💬 AI Chatbot (FAQ Bot)
-  </a>
-
-  <a class="project" href="https://github.com/raheelaly981-cpu/CodeAlpha_LanguageTranslator" target="_blank">
-    🌍 Language Translator Tool
-  </a>
+  <h2>AI Projects</h2>
+  <div class="card">💬 AI Chatbot (CodeAlpha)</div>
+  <div class="card">🌍 Language Translator</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: raheelaly981@gmail.com</p>
-  <p>Location: Ghotki, Sindh</p>
+  <div class="card">
+    Email: raheelaly981@gmail.com <br>
+    Phone: +92 3053741981
+  </div>
 </section>
 
 <script>
-function toggleTheme() {
-  document.body.classList.toggle("light");
+
+/* ===== LOAD SAVED IMAGE ===== */
+window.onload = function () {
+  const savedImage = localStorage.getItem("profileImage");
+
+  if (savedImage) {
+    document.getElementById("profilePic").src = savedImage;
+  }
+};
+
+/* ===== UPLOAD + SAVE ===== */
+document.getElementById("uploadImage").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      const imgData = event.target.result;
+
+      const img = document.getElementById("profilePic");
+      img.src = imgData;
+
+      // KEEP CIRCLE FIXED
+      img.style.width = "140px";
+      img.style.height = "140px";
+      img.style.borderRadius = "50%";
+      img.style.objectFit = "cover";
+
+      // SAVE PERMANENTLY
+      localStorage.setItem("profileImage", imgData);
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+/* SCROLL */
+function scrollToProjects() {
+  document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
 }
+
 </script>
 
 </body>
