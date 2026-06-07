@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 /* ===== GLOBAL ===== */
 * {
   margin: 0;
@@ -19,6 +20,7 @@
 body {
   background: linear-gradient(135deg, #0f172a, #020617);
   color: white;
+  overflow-x: hidden;
 }
 
 /* ===== NAV ===== */
@@ -29,8 +31,8 @@ nav {
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(15px);
   background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
   z-index: 1000;
 }
 
@@ -62,11 +64,6 @@ nav a {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #38bdf8;
-  transition: 0.3s;
-}
-
-/* FLOAT ANIMATION */
-.profile {
   animation: float 3s ease-in-out infinite;
 }
 
@@ -75,7 +72,7 @@ nav a {
   50% { transform: translateY(-10px); }
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
   margin-top: 15px;
   padding: 10px 20px;
@@ -89,8 +86,8 @@ nav a {
 }
 
 .btn:hover {
-  box-shadow: 0 0 15px #38bdf8;
   transform: scale(1.05);
+  box-shadow: 0 0 15px #38bdf8;
 }
 
 /* INPUT */
@@ -99,19 +96,28 @@ input[type="file"] {
   color: white;
 }
 
-/* CARDS */
+/* ===== PROJECT CARDS ===== */
 .card {
+  display: block;
   background: rgba(255,255,255,0.05);
   padding: 20px;
   margin: 15px auto;
   width: 80%;
   border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
   backdrop-filter: blur(10px);
 
-  /* ANIMATION */
+  /* animation */
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
+  animation: fadeUp 0.8s forwards;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(56,189,248,0.3);
 }
 
 @keyframes fadeUp {
@@ -120,6 +126,7 @@ input[type="file"] {
     transform: translateY(0);
   }
 }
+
 </style>
 </head>
 
@@ -130,8 +137,8 @@ input[type="file"] {
   <h2>Raheel Studio</h2>
   <div>
     <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#ai">AI</a>
+    <a href="#projects">Web Projects</a>
+    <a href="#ai">AI Projects</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -139,7 +146,7 @@ input[type="file"] {
 <!-- HERO -->
 <section class="hero" id="home">
 
-  <!-- PROFILE IMAGE -->
+  <!-- PROFILE -->
   <img id="profilePic" class="profile" src="profile.jpg" alt="profile">
 
   <h1>Hi, I'm Raheel Ahmed 👋</h1>
@@ -149,26 +156,43 @@ input[type="file"] {
   <input type="file" accept="image/*" id="uploadImage">
 
   <button class="btn" onclick="scrollToProjects()">View Projects</button>
+
 </section>
 
-<!-- PROJECTS -->
+<!-- WEB PROJECTS -->
 <section id="projects">
-  <h2>Web Projects</h2>
-  <div class="card">💰 Expense Tracker</div>
-  <div class="card">💬 Quote Generator</div>
-  <div class="card">🧠 Flashcard App</div>
+  <h2 style="text-align:center; margin-top:40px;">Web Projects</h2>
+
+  <a class="card" href="https://github.com/raheelaly981-cpu/expense-tracker" target="_blank">
+    💰 Expense Tracker
+  </a>
+
+  <a class="card" href="https://github.com/raheelaly981-cpu/quote-generator" target="_blank">
+    💬 Quote Generator
+  </a>
+
+  <a class="card" href="https://github.com/raheelaly981-cpu/flashcard-app" target="_blank">
+    🧠 Flashcard App
+  </a>
 </section>
 
-<!-- AI -->
+<!-- AI PROJECTS -->
 <section id="ai">
-  <h2>AI Projects</h2>
-  <div class="card">💬 AI Chatbot (CodeAlpha)</div>
-  <div class="card">🌍 Language Translator</div>
+  <h2 style="text-align:center;">AI Projects</h2>
+
+  <a class="card" href="https://github.com/raheelaly981-cpu/CodeAlpha_Chatbot" target="_blank">
+    💬 AI Chatbot (CodeAlpha)
+  </a>
+
+  <a class="card" href="https://github.com/raheelaly981-cpu/CodeAlpha_LanguageTranslator" target="_blank">
+    🌍 Language Translator
+  </a>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
+  <h2 style="text-align:center;">Contact</h2>
+
   <div class="card">
     Email: raheelaly981@gmail.com <br>
     Phone: +92 3053741981
@@ -177,12 +201,11 @@ input[type="file"] {
 
 <script>
 
-/* ===== LOAD SAVED IMAGE ===== */
+/* ===== LOAD IMAGE ===== */
 window.onload = function () {
-  const savedImage = localStorage.getItem("profileImage");
-
-  if (savedImage) {
-    document.getElementById("profilePic").src = savedImage;
+  const saved = localStorage.getItem("profileImage");
+  if (saved) {
+    document.getElementById("profilePic").src = saved;
   }
 };
 
@@ -199,13 +222,6 @@ document.getElementById("uploadImage").addEventListener("change", function(e) {
       const img = document.getElementById("profilePic");
       img.src = imgData;
 
-      // KEEP CIRCLE FIXED
-      img.style.width = "140px";
-      img.style.height = "140px";
-      img.style.borderRadius = "50%";
-      img.style.objectFit = "cover";
-
-      // SAVE PERMANENTLY
       localStorage.setItem("profileImage", imgData);
     };
 
@@ -213,7 +229,7 @@ document.getElementById("uploadImage").addEventListener("change", function(e) {
   }
 });
 
-/* SCROLL */
+/* ===== SMOOTH SCROLL ===== */
 function scrollToProjects() {
   document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
 }
