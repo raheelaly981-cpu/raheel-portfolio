@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Raheel Studio</title>
 
-<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +16,6 @@
   scroll-behavior: smooth;
 }
 
-/* BODY */
 body {
   background: #0f172a;
   color: white;
@@ -30,7 +27,6 @@ body.light {
   color: #0f172a;
 }
 
-/* NAVBAR */
 nav {
   display: flex;
   justify-content: space-between;
@@ -60,7 +56,6 @@ nav a:hover {
   color: #38bdf8;
 }
 
-/* BUTTON */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -70,31 +65,21 @@ nav a:hover {
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-}
-
-/* SECTIONS */
 section {
   padding: 70px 20px;
   text-align: center;
-  animation: fadeUp 0.8s ease;
 }
 
-/* PROFILE IMAGE */
 .profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #38bdf8;
-  margin-bottom: 15px;
 }
 
-/* PROJECT */
 .project {
   display: block;
   background: #1e293b;
@@ -104,68 +89,27 @@ section {
   width: 80%;
   text-decoration: none;
   color: white;
-  transition: 0.3s;
 }
 
 .project:hover {
-  transform: translateY(-5px);
   background: #334155;
 }
 
-body.light .project {
-  background: #e2e8f0;
-}
-
-/* SOCIAL ICONS */
-.social-icons {
-  margin-top: 15px;
-}
-
 .social-icons a {
-  display: inline-block;
-  margin: 5px 8px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  background: #1e293b;
+  margin: 5px;
   color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-.social-icons a i {
-  margin-right: 8px;
-  font-size: 18px;
-  color: #38bdf8;
-}
-
-.social-icons a:hover {
-  background: #38bdf8;
-  color: black;
-  transform: scale(1.1);
-}
-
-.social-icons a:hover i {
-  color: black;
-}
-
-/* SKILLS */
 .skill-bar {
   width: 80%;
-  margin: 15px auto;
-  text-align: left;
-}
-
-.skill-name {
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin: 10px auto;
 }
 
 .bar {
-  width: 100%;
-  height: 10px;
   background: #1e293b;
+  height: 10px;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .fill {
@@ -173,119 +117,48 @@ body.light .project {
   width: 0;
   background: #38bdf8;
   border-radius: 10px;
-  transition: width 1.5s ease-in-out;
 }
 
-/* INPUTS */
-input, textarea {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* TOGGLE */
 .toggle-btn {
   cursor: pointer;
-  background: transparent;
   border: 1px solid #38bdf8;
+  padding: 5px 10px;
+  background: transparent;
   color: inherit;
-  padding: 6px 12px;
-  border-radius: 5px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <h2>Raheel Studio</h2>
-
   <div>
     <a href="#home">Home</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#ai">AI Projects</a>
     <a href="#contact">Contact</a>
-
-    <button class="toggle-btn" onclick="toggleTheme()">🌙 / ☀</button>
+    <button class="toggle-btn" onclick="toggleTheme()">🌙/☀</button>
   </div>
 </nav>
 
 <!-- HOME -->
 <section id="home">
-
-  <img id="profilePic" class="profile-img" src="profile.jpg" alt="Profile">
-
+  <img id="profilePic" class="profile-img" src="profile.jpg">
   <h1>Hi, I'm Raheel Ahmed 👋</h1>
-  <p>Frontend Developer | HTML | CSS | JavaScript</p>
-
-  <a href="#projects" class="btn">View Projects</a>
-  <a href="#contact" class="btn">Contact Me</a>
-
-  <!-- SOCIAL LINKS (FIXED) -->
-  <div class="social-icons">
-
-    <a href="https://github.com/raheelaly981-cpu" target="_blank">
-      <i class="fa-brands fa-github"></i> GitHub
-    </a>
-
-    <a href="https://www.linkedin.com/in/raheel-aly-b69806318/" target="_blank">
-      <i class="fa-brands fa-linkedin"></i> LinkedIn
-    </a>
-
-    <a href="https://www.instagram.com/raealy754/" target="_blank">
-      <i class="fa-brands fa-instagram"></i> Instagram
-    </a>
-
-  </div>
-
-  <br><br>
-
-  <input type="file" accept="image/*" id="uploadImage">
+  <p>Frontend Developer | AI Enthusiast</p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <h2>My Skills</h2>
-
-  <div class="skill-bar">
-    <div class="skill-name">HTML</div>
-    <div class="bar"><div class="fill" data-width="90%"></div></div>
-  </div>
-
-  <div class="skill-bar">
-    <div class="skill-name">CSS</div>
-    <div class="bar"><div class="fill" data-width="85%"></div></div>
-  </div>
-
-  <div class="skill-bar">
-    <div class="skill-name">JavaScript</div>
-    <div class="bar"><div class="fill" data-width="70%"></div></div>
-  </div>
-
-  <div class="skill-bar">
-    <div class="skill-name">GitHub</div>
-    <div class="bar"><div class="fill" data-width="75%"></div></div>
-  </div>
+  <h2>Skills</h2>
+  <p>HTML | CSS | JavaScript | Python | AI Basics</p>
 </section>
 
-<!-- PROJECTS (FIXED LINKS) -->
+<!-- PROJECTS -->
 <section id="projects">
-  <h2>My Projects</h2>
+  <h2>Web Projects</h2>
 
   <a class="project" href="https://github.com/raheelaly981-cpu/expense-tracker" target="_blank">
     💰 Expense Tracker
@@ -300,71 +173,30 @@ input, textarea {
   </a>
 </section>
 
+<!-- AI PROJECTS (CODEALPHA ADDED) -->
+<section id="ai">
+  <h2>🤖 AI Internship Projects (CodeAlpha)</h2>
+
+  <a class="project" href="https://github.com/raheelaly981-cpu/CodeAlpha_Chatbot" target="_blank">
+    💬 AI Chatbot (FAQ Bot)
+  </a>
+
+  <a class="project" href="https://github.com/raheelaly981-cpu/CodeAlpha_LanguageTranslator" target="_blank">
+    🌍 Language Translator Tool
+  </a>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact Me</h2>
-
+  <h2>Contact</h2>
   <p>Email: raheelaly981@gmail.com</p>
-  <p>Phone: +92 3053741981</p>
-  <p>Location: Ghotki, Sindh, Pakistan</p>
-
-  <input type="text" placeholder="Your Name"><br>
-  <input type="email" placeholder="Your Email"><br>
-  <textarea rows="5" placeholder="Your Message"></textarea><br>
-
-  <button class="btn">Send Message</button>
+  <p>Location: Ghotki, Sindh</p>
 </section>
 
 <script>
-
-/* THEME */
 function toggleTheme() {
   document.body.classList.toggle("light");
-
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("light") ? "light" : "dark"
-  );
 }
-
-/* LOAD */
-window.onload = function () {
-  if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light");
-  }
-
-  const savedImage = localStorage.getItem("profileImage");
-  if (savedImage) {
-    document.getElementById("profilePic").src = savedImage;
-  }
-
-  animateSkills();
-};
-
-/* IMAGE UPLOAD */
-document.getElementById("uploadImage").addEventListener("change", function(e) {
-  const file = e.target.files[0];
-
-  if (file) {
-    const reader = new FileReader();
-
-    reader.onload = function(event) {
-      const imgData = event.target.result;
-      document.getElementById("profilePic").src = imgData;
-      localStorage.setItem("profileImage", imgData);
-    };
-
-    reader.readAsDataURL(file);
-  }
-});
-
-/* SKILLS */
-function animateSkills() {
-  document.querySelectorAll(".fill").forEach(fill => {
-    fill.style.width = fill.getAttribute("data-width");
-  });
-}
-
 </script>
 
 </body>
